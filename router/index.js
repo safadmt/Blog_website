@@ -201,21 +201,3 @@ router.get('/logout', (req, res) => {
     res.redirect('/')
 })
 module.exports = router;
-// if (users.user_status === "Premium") {
-//             let proid = req.params.id;
-//             let user = req.session.user;
-//             blogController.postrating(proid, user, req.body, (response) => {
-//                 req.flash('success_msg', 'Thank you for posting your rating')
-//                 res.redirect('/blogs/' + req.params.id,)
-//             })
-//         } else {
-//             req.flash('error_msg', 'Only Premium users can give rating')
-//             res.redirect('/blogs/' + req.params.id)
-//         }
-
-    // if (users.user_status === "Premium") {
-                
-    //         } else {
-    //             req.flash('error_msg', 'Only Premium users can comment')
-    //             res.redirect('/blogs/' + req.params.id)
-    //         }
