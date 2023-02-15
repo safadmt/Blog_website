@@ -1,0 +1,25 @@
+<div class="container my-5">
+    <div class="col-md-6 m-auto">
+        {{>messages}}
+        <a href="/admin" class="btn btn-outline-primary my-2">Back to admin</a>
+        <a href="/admin/manage-topics/add" class="btn btn-outline-primary">Add Topics</a>
+        <h4>Topic list</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each topics}}
+                <tr>
+                    <td>{{this.topic}}</td>
+                    <td><a href="/admin/edit-topic/{{this._id}}" class="btn btn-outline-success">Edit</a></td>
+                    <td><a href="/admin/delete-topic/{{this._id}}" class="btn btn-outline-success" onclick="return confirm('Are you sure you want to this Topic')">Delete</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

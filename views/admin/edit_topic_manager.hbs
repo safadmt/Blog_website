@@ -1,0 +1,28 @@
+
+<div class="container mt-5">
+
+        <div class="col-lg-4 card p-4 m-auto">
+            <h4 class="text-center"><i class="fa-solid fa-registered me-2"></i>Edit Topic manager</h4>
+            {{>messages}}
+            <form action="/admin/edit_topicmanager/{{response._id}}" method="post">
+               <div class="form-group">
+                    <label for="">Topic</label>
+                    <select class="form-select mb-2" aria-label="Default select example" name="topics">
+                    <option value="{{topic._id}}">{{topic.topic}}</option>
+                    {{#each topics}}
+                    <option value="{{this._id}}">{{this.topic}}</option>
+                    {{/each}}
+            </select>
+               </div> 
+               <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email..." value="{{response.email}}" class="form-control">
+               </div>
+               <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+               </div>
+               <button type="submit" class="btn btn-primary mt-2" id="submit" style="width: 100%;">Register</button>
+            </form>
+        </div>
+    </div>

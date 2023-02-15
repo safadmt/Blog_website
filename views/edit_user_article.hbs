@@ -1,0 +1,21 @@
+<div class="container  my-5">
+    <div class="row col-md-10">
+        <p class="fw-bold text-info">Write articles based on the listed topics</p>
+    </div>
+    <div class="col-md-10">
+        <form action="/users/editeuserArticle/{{blog._id}}" method="post">
+            <label for="">Topics</label>
+            <select class="form-select mb-2" aria-label="Default select example" name="topics">
+                <option value="{{blog.topicdetails._id}}">{{blog.topicdetails.topic}}</option>
+                {{#each topics}}
+                <option value="{{this._id}}">{{this.topic}}</option>
+                {{/each}}
+            </select>
+            <label for="">Description</label>
+            <input type="text" name="description" class="form-control mb-2" value="{{blog.description}}">
+            <label for="">Article</label>
+            <textarea class="form-control mb-2" name="article" id="article" cols="30" rows="10">{{blog.article}}</textarea>
+            <button type="submit" class="btn btn-success" style="width: 100%;">submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container my-5">
+    <div class="col-md-8 m-auto">
+        {{>messages}}
+        <a href="/admin" class="btn btn-outline-primary">Back to admin</a>
+        <h4>Users list</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.approved}}</td>
+                    <td><button class="btn btn-outline-success" onclick="rejectorApprove('{{this._id}}','1')">Approve user</button></td>
+                    <td><button class="btn btn-outline-success" onclick="rejectorApprove('{{this._id}}','0')">Reject user</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function rejectorApprove(userid,value) {
+        
+        console.log(value)
+        $.ajax({
+                url: '/users/updateOneUser/'+userid,
+                method: 'post',
+                data: {
+                    value: value
+                },
+                success: (response)=> {
+                    console.log(response)
+                    if(response === "1"){
+                        
+                        location.reload()
+                    }else if(response === "0"){
+                       
+                       location.reload()
+                    }
+                }
+            })
+    }
+</script>
+

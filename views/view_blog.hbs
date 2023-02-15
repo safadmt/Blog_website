@@ -1,0 +1,50 @@
+<div class="">
+    <div class="row my-5 m-auto p-5">
+        {{>messages}}
+        {{#if blog}}
+        <div class="card col mb-5">
+            <h1>{{blog.description}}</h1>
+            <p><span class="fw-bold">By:</span> {{blog.userdetails.name}} | <span class="fw-bold">Topic:</span>
+                {{blog.topicdetails.topic}}</p>
+            <p class="fs-5 mb-5">{{blog.article}}</p>
+        </div>
+        <div class="card col-md-4 mb-5 ms-3">
+            <div class="card m-1 ps-2">
+                <h6>Author Details:</h6>
+                <p><span class="fw-bold">Email : </span> {{blog.userdetails.email}}</p>
+                <p><span class="fw-bold">Name : </span> {{blog.userdetails.name}}</p>
+                <p><span id="rating">Rating : </span>{{blog.userdetails.rating}}/5</p>
+            </div>
+
+
+
+            <h6 class="mt-2 ms-2">Rate this article</h6>
+            <form action="/submit-rating/{{blog._id}}" method="post">
+                <input type="hidden" name="userId" value="{{blog.userdetails._id}}">
+                <input class="form-control" type="number" name="rating" placeholder="Enter you rating out of 5">
+                <button type="submit" class="btn btn-success mt-2">Submit</button>
+            </form>
+            <div id="commentdiv">
+            <h6 class="mt-2 ms-2" id="comment">want to leave a comment</h6>
+            <form action="/submit-comment/{{blog._id}}" method="post">
+                <textarea name="comment" id="" cols="30" rows="6" class="form-control"></textarea>
+                <button type="submit" class="btn btn-success mt-2">Submit</button>
+            </form>
+        </div>
+        <h6 class="mt-2">Comments:</h6>
+        <div>
+            {{#each blog.comments}}
+            <div class="card p-1 mb-1">
+                <p class="fw-bold">{{this.email}}</p>
+                <p>{{this.comment}}</p>
+            </div>
+            {{/each}}
+        </div>
+
+        </div>
+        
+    </div>
+    {{/if}}
+</div>
+</div>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .card {
+      max-height: 200px;
+      overflow: hidden;
+      background-color: azure;
+      color: black;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>User Dashboared</h1>
+    <div class="col-md-10 m-auto card my-5 p-3">
+      {{>messages}}
+      <ul class="list-inline">
+  
+        <li class="list-inline-item"><a href="/formarticle" class="btn btn-primary"><i
+              class="fa-solid fa-pen-nib me-2"></i>Write Aritcle</a></li>
+        <li class="list-inline-item"><a href="/" class="btn btn-primary">Home</a></li>
+        <li class="list-inline-item"><div class="dropdown me-2">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Edit Account
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/users/change_password">Change account password</a></li>
+  </ul>
+</div></li>        
+
+      </ul>
+      
+      <div class="row">
+        <h6 class="col-md-4">User Rating : {{user.rating}}</h6>
+        <h6 class="col-md-4">Status:  {{user.status}} Member</h6>
+      </div>
+      <small class="ms-auto">Want to delete account and related articles? <a href="/users/delete-user/{{user.id}}" onclick="return confirm('Are you sure you want to delete this accout and related articles')">Delete</a></small>
+    </div>
+  </div>
+  <div class="container">
+    <h1>hello</h1><h1>{{topic.topic}}</h1>
+    <div class="row my-5">
+      
+      {{#each articles}}
+      
+      <a class="col-md-8" href="/users/blogs/{{this._id}}">
+        <div class="card p-3 my-3" id="homearticle">
+          <h3>{{this.description}}</h3>
+          
+          <small>Topic: {{this.topicdetails.topic}}</small>
+          <p class="fw-bold mt-2">{{this.article}}</p>
+        </div>
+      </a>
+      <div class="col-md-2 my-3 d">
+
+        <a class="btn btn-success btn-block d-grid mb-3" href="/users/editeuserArticle/{{this._id}}">Edit</a>
+        <a class="btn btn-danger btn-block d-grid" href="/users/deleteuserArticle/{{this._id}}" onclick="return confirm('Are you sure, You want to delete this article')">Delete</a>
+      </div>
+
+
+
+
+      {{/each}}
+
+    </div>
+  </div>
+</body>
+
+</html>

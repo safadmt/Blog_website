@@ -1,0 +1,25 @@
+<div class="container my-5">
+    <div class="col-md-6 m-auto">
+        {{>messages}}
+        <a href="/admin" class="btn btn-outline-primary my-2">Back to admin</a>
+        <h4>Articles list</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each articles}}
+                <tr>
+                    <td>{{this.topicdetails.topic}}</td>
+                    <td>{{this.description}}</td>
+                    <td><a href="/admin/delete-article/{{this._id}}" class="btn btn-outline-success" onclick="return confirm('Are you sure you want to this article')">Delete</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

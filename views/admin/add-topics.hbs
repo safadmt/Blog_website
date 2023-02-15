@@ -1,0 +1,16 @@
+
+<div class="container mt-5">
+        <div class="col-lg-4 card p-4 m-auto">
+            <h4 class="text-center">Add Topics</h4>
+            {{>messages}}
+            <form action="/admin/manage-topics/add" method="post">
+               
+               <div class="form-group">
+                    <label for="">Topic</label>
+                    <input type="text" name="topic" id="topic" class="form-control">
+               </div>
+               
+               <button type="submit" class="btn btn-outline-primary mt-2" id="submit" style="width: 100%;">Add topic</button>
+            </form>
+        </div>
+    </div>

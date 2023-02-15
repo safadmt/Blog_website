@@ -1,0 +1,35 @@
+
+    <div >
+        <h1>hello</h1>
+        {{>messages}}
+        <div class="row my-5 p-3 mx-3">
+            <div class="col-md-4 card me-1 my-3">
+                <h6 class="mt-2">Filter Topics</h6>
+                <ul>
+                    {{#each topics}}
+                    <li><a href="/topics/{{this._id}}">{{this.topic}}</a></li>
+                    {{/each}}
+                </ul>
+                <div class="mb-3">
+                    <a href="/" class="btn btn-outline-primary float-end">Reset changes</a>
+                </div>
+            </div>
+            <div class="col">
+                {{#each article}}
+                <div class="col-md-12">
+                    <a id="blog" href="/blogs/{{this._id}}">
+                        <div class="card p-3 my-3" id="homearticle">
+                            <h3>{{this.description}}</h3>
+                            <small>By : {{this.userdetails.name}} | Topic : {{this.topicdetails.topic}}</small>
+                            <p class="fw-bold mt-2">{{this.article}}</p>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="/blogs/{{this._id}}" class="btn btn-success">view full</a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
